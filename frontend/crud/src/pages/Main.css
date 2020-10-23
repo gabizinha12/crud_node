@@ -1,0 +1,21 @@
+.main-container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .main-container ul{
+    display: flex;
+    margin-top: 50px;
+  }
+  
+  .main-container li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-container ul li {
+    display: flex;
+    flex-direction: column;
+  }

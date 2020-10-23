@@ -14,10 +14,10 @@ mongoose.connect('mongodb+srv://softwrap:softwrap@cluster0.offec.mongodb.net/cru
 }).catch((err) => {
     console.log('deu pau' + err);
 })
+server.use(cors())
 server.use(express.json())
 server.use(bodyParser.json())
 server.use('/api', require('./routes'));
   
-server.use(cors())
 
 server.listen(3000);

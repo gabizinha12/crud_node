@@ -14,7 +14,7 @@ module.exports = {
 
      async index(req,res) {
      try {
-         Person.findById().then((person) => {
+         Person.find().then((person) => {
              res.send({person});
          })
      }
