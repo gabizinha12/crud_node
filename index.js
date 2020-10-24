@@ -22,4 +22,4 @@ server.use(express.json());
 server.use(bodyParser.json());
 server.use("/api", require("./routes"));
 
-server.listen(3000);
+server.listen(process.env.PORT || 3000);
