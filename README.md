@@ -12,4 +12,4 @@
 - MongoDB
 - Mongoose
 ### Sobre o projeto:
-No começo decidi usar Firebase, mas tive muita dificuldade, então usei MongoDB com Node devido a facilidade com a ferramenta
+No começo decidi usar Firebase, mas tive muita dificuldade, então usei MongoDB com Node devido a facilidade com a ferramenta, pois já havia feito projetos em Node usando MongoDB.
