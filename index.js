@@ -17,6 +17,11 @@ mongoose
   .catch((err) => {
     console.error(err);
   });
+
+server.get("/", function (req, res, next) {
+  res.status(200).send("Hi, It works!");
+});
+
 server.use(cors());
 server.use(express.json());
 server.use(bodyParser.json());
