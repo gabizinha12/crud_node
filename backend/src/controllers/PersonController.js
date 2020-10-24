@@ -3,7 +3,7 @@ module.exports = {
     async show(req,res) {
         try {
             Person.find().then((person) => {
-                res.send({person})
+                res.send(person)
             })
         }
         catch(err) {
@@ -15,7 +15,7 @@ module.exports = {
      async index(req,res) {
      try {
          Person.find().then((person) => {
-             res.send({person});
+             res.send(person);
          })
      }
      catch(err) {
@@ -25,7 +25,7 @@ module.exports = {
     async store(req, res){
         try {
             const person = await Person.create(req.body)
-            return res.send({person})   
+            return res.send(person)   
         }
         catch(err) {
             return res.status(400).send({error: 'Registration failed'})
