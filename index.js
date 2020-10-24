@@ -4,9 +4,10 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const env = require("dotenv").config({ path: "./env" });
 const server = express();
+const db = require("./db");
 
 mongoose
-  .connect(process.env.MONGO_DB_URI, {
+  .connect(db.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
