@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const env = require("dotenv").config();
 const server = express();
-const db = require("./db");
 
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useCreateIndex", true);
