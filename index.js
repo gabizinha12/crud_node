@@ -7,7 +7,7 @@ const server = express();
 const db = require("./db");
 
 mongoose
-  .connect(db.mongoURI, {
+  .connect(db.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
