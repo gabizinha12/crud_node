@@ -11,7 +11,7 @@ mongoose.set("useCreateIndex", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose.set("useFindAndModify", false);
 
-mongoose.connect(db.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
 server.get("/", function (req, res, next) {
   res.status(200).send("Hi, It works!");
