@@ -11,7 +11,13 @@ mongoose.set("useCreateIndex", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose.set("useFindAndModify", false);
 
-mongoose.connect(process.env.MONGODB_URI, () => console.log("connected to db"));
+mongoose
+  .connect(
+    "mongodb+srv://softwrap:softwrap@cluster0.offec.mongodb.net/crud?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("connected to db");
+  });
 
 server.get("/", function (req, res, next) {
   res.status(200).send("Hi, It works!");
