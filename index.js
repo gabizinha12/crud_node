@@ -6,9 +6,7 @@ const mongoose = require("mongoose");
 const db = require("./db");
 const server = express();
 
-
-server.use(cors())
-  next();
+server.use("*", cors());
 
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useCreateIndex", true);
@@ -26,7 +24,6 @@ mongoose
 server.get("/", function (req, res, next) {
   res.status(200).send("Hi, It works!");
 });
-
 
 server.use(express.json());
 server.use(bodyParser.json());
