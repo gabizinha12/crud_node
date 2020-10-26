@@ -9,47 +9,29 @@ module.exports = {
       return res.status(400).send({ error: 'Couldnt find register' })
     }
   },
-  async pagination(req, res) {
-    try {
-      const page = parseInt(req.query.page)
-      const limit = parseInt(req.query.limit) // Make sure to parse the limit to number
-
-      const offset = page ? page * limit : 0
-
-      // We are using the '3 layer' architecture explored on the 'bulletproof node.js architecture'
-      // Basically, it's just a class where we have our business logic
-
-      let results = await Person.find({}) // You may want to add a query
-        .skip(offset) // Always apply 'skip' before 'limit'
-        .limit(limit)
-        .select('-__v') // This is your 'page size'
-
-      let numOfPersons = await Person.countDocuments({})
-
-      res.status(200).json({
-        message:
-          'Paginating is completed! Query parameters: page = ' +
-          page +
-          ', limit = ' +
-          limit,
-        totalPages: Math.ceil(numOfPersons / limit),
-        totalItems: numOfPersons,
-        limit: limit,
-        currentPageSize: results.length,
-        customers: results,
-      })
-    } catch (error) {
-      res.status(500).send({
-        message: 'Error -> Can NOT complete a paging request!',
-        error: error.message,
-      })
-    }
-  },
-
   async index(req, res) {
     try {
-      Person.find().then((person) => {
-        res.send(person)
+      var pageNo = req.params.page // parseInt(req.query.pageNo)
+      var size = req.params.perPage
+      var query = {}
+      if (pageNo < 0 || pageNo === 0) {
+        response = {
+          error: true,
+          message: 'invalid page number, should start with 1',
+        }
+        return res.json(response)
+      }
+      query.skip = size * (pageNo - 1)
+      query.limit = parseInt(size)
+      // Find some documents
+      Person.find({}, {}, query, function (err, data) {
+        // Mongo command to fetch all data from collection.
+        if (err) {
+          response = { error: true, message: 'Error fetching data' }
+        } else {
+          response = { error: false, message: data }
+        }
+        res.json(response)
       })
     } catch (err) {
       return res.status(400).send({ error: 'Couldnt find register' })
