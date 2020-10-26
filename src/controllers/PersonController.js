@@ -11,10 +11,20 @@ module.exports = {
     }
   },
   async index(req, res) {
+    let query = {}
+    let page = req.query.page
+    let limit = 10
+    let skip = limit * (page - 1)
     try {
-      Person.find().then((person) => {
-        res.send(person)
-      })
+      Person.find(query)
+        .skip(skip)
+        .limit(limit)
+        .skip(skip)
+        .limit(limit)
+        .exec()
+        .then((person) => {
+          res.send(person)
+        })
     } catch (err) {
       return res.status(400).send({ error: 'Couldnt find register' })
     }
