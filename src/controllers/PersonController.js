@@ -19,8 +19,6 @@ module.exports = {
       Person.find(query)
         .skip(skip)
         .limit(limit)
-        .skip(skip)
-        .limit(limit)
         .exec()
         .then((person) => {
           res.send(person)
